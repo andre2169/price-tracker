@@ -1,3 +1,8 @@
+import os
+from dotenv import load_dotenv
+
+
+
 HEADERS = {
     "User-Agent":
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -5,3 +10,7 @@ HEADERS = {
     "Chrome/120.0.0.0 Safari/537.36",
     "Accept-Language": "pt-BR,pt;q=0.9"
 }
+
+load_dotenv()
+
+URL_PRODUTO = os.getenv("URL_PRODUTO")

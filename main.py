@@ -1,14 +1,9 @@
 from app.service import obter_preco_atual
+from app.config import URL_PRODUTO
 
 
 def main():
-    url = (
-        "https://www.mercadolivre.com.br/"
-        "bicicleta-eletrica-scooter-bike-750w-104ah-led-2540kmh-cor-preto/"
-        "p/MLB46639230"
-    )
-
-    preco = obter_preco_atual(url)
+    preco = obter_preco_atual(URL_PRODUTO)
     print(f"Preço atual: R$ {preco}")
 
 
