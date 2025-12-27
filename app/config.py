@@ -14,3 +14,4 @@ HEADERS = {
 load_dotenv()
 
 URL_PRODUTO = os.getenv("URL_PRODUTO")
+PRECO_ALVO = float(os.getenv("PRECO_ALVO"))

@@ -1,11 +1,13 @@
 from app.scraper import buscar_preco
 from app.parser import limpar_preco
+from app.config import PRECO_ALVO
 
 
-def obter_preco_atual(url: str) -> float:
+def verificar_preco(url: str) -> bool:
     """
-    Orquestra a obtenção do preço atual de um produto.
+    Verifica se o preço atual é menor ou igual ao preço alvo.
     """
     preco_texto = buscar_preco(url)
-    preco_float = limpar_preco(preco_texto)
-    return preco_float
+    preco_atual = limpar_preco(preco_texto)
+
+    return preco_atual <= PRECO_ALVO

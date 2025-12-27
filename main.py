@@ -1,10 +1,12 @@
-from app.service import obter_preco_atual
+from app.service import verificar_preco
 from app.config import URL_PRODUTO
 
 
 def main():
-    preco = obter_preco_atual(URL_PRODUTO)
-    print(f"Preço atual: R$ {preco}")
+    if verificar_preco(URL_PRODUTO):
+        print("🔥 Preço abaixo do alvo!")
+    else:
+        print("Preço ainda acima do alvo.")
 
 
 if __name__ == "__main__":
