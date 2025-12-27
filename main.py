@@ -1,12 +1,14 @@
+import logging
 from app.service import verificar_preco
 from app.config import URL_PRODUTO
 
 
 def main():
-    if verificar_preco(URL_PRODUTO):
-        print("🔥 Preço abaixo do alvo!")
-    else:
-        print("Preço ainda acima do alvo.")
+    logging.info("Iniciando verificação de preço")
+
+    verificar_preco(URL_PRODUTO)
+
+    logging.info("Finalizando execução")
 
 
 if __name__ == "__main__":

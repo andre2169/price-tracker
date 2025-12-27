@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
-
+import logging
+from pathlib import Path
 
 
 HEADERS = {
@@ -14,4 +15,13 @@ HEADERS = {
 load_dotenv()
 
 URL_PRODUTO = os.getenv("URL_PRODUTO")
-PRECO_ALVO = float(os.getenv("PRECO_ALVO"))
+PRECO_MAXIMO = float(os.getenv("PRECO_ALVO"))
+
+LOG_DIR = Path("logs")
+LOG_DIR.mkdir(exist_ok=True)
+
+logging.basicConfig(
+    filename=LOG_DIR / "price_tracker.log",
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+)
