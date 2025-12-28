@@ -1,0 +1,4 @@
+SHELL=/bin/sh
+PATH=/usr/local/bin:/usr/bin:/bin
+
+*/1 * * * * root /usr/local/bin/python3 /app/main.py >> /app/logs/cron.log 2>&1

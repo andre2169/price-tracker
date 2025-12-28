@@ -5,11 +5,12 @@ from app.config import PRECO_MAXIMO
 
 
 def verificar_preco(url: str) -> bool:
-    """
-    Regra de negócio:
-    Retorna True se o preço atual for menor ou igual ao preço máximo definido.
-    """
     preco_texto = buscar_preco(url)
+
+    if not preco_texto:
+        logging.warning("Não foi possível obter o preço.")
+        return False
+
     preco_atual = limpar_preco(preco_texto)
 
     logging.info(

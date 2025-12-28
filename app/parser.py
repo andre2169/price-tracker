@@ -1,14 +1,22 @@
-def limpar_preco(preco_texto: str) -> float:
-    """
-    Converte um preço em formato brasileiro para float.
+import re
 
-    Exemplos:
-    "5.200" -> 5200.0
-    "1.500,90" -> 1500.90
-    "R$ 3.999,99" -> 3999.99
+def limpar_preco(preco: str) -> float:
+    """
+    Converte strings como:
+    'R$ 5.177,00'
+    'Â5177'
+    '5.177'
+    em float: 5177.0
     """
 
-    preco = preco_texto.replace("R$", "")
-    preco = preco.replace(".", "")
-    preco = preco.replace(",", ".")
-    return float(preco.strip())
+    if not preco:
+        raise ValueError("Preço vazio ou None")
+
+    # Remove qualquer coisa que não seja número ou separador
+    preco_limpo = re.sub(r"[^\d,\.]", "", preco)
+
+    # Se vier no formato brasileiro
+    if "," in preco:
+        preco_limpo = preco_limpo.replace(".", "").replace(",", ".")
+
+    return float(preco_limpo)
