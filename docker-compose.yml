@@ -1,0 +1,11 @@
+
+services:
+  price-tracker:
+    build: .
+    container_name: price-tracker
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+    command: python main.py
+
